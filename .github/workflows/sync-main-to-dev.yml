@@ -1,0 +1,46 @@
+name: Sync main → dev (post-release)
+
+on:
+  workflow_run:
+    workflows: ['Release']
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: sync-main-to-dev
+  cancel-in-progress: true
+
+jobs:
+  open-sync-pr:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const base = 'dev';
+            const head = 'main';
+
+            const existing = await github.paginate(
+              github.rest.pulls.list,
+              { owner, repo, state: 'open', base, head: `${owner}:${head}` }
+            );
+            if (existing.length) {
+              core.info(`Sync PR already open: #${existing[0].number}`);
+              return;
+            }
+            try {
+              const pr = await github.rest.pulls.create({
+                owner, repo, base, head,
+                title: 'chore: sync main → dev',
+                body: 'Automated back-merge after successful Release workflow.'
+              });
+              core.info(`Opened PR #${pr.data.number}`);
+            } catch (e) {
+              if (e.status === 422) core.notice('Nothing to sync (branches equal).');
+              else core.setFailed(`Create PR failed: ${e.status} ${e.message}`);
+            }

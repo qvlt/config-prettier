@@ -1,0 +1,52 @@
+{
+  "name": "@qvlt/config-prettier",
+  "version": "0.0.2",
+  "description": "Prettier configuration for Qvlt projects",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    },
+    "./ignore": "./ignore"
+  },
+  "files": [
+    "index.js",
+    "index.cjs",
+    "ignore",
+    "example/"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "qvlt"
+  ],
+  "author": "Qvlt",
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^3.6.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qvlt/config-prettier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qvlt/config-prettier/issues"
+  },
+  "homepage": "https://github.com/qvlt/config-prettier#readme",
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "release:tag": "bash -lc 'set -euxo pipefail; [ \"$(git rev-parse --abbrev-ref HEAD)\" = main ] || { echo \"Error: run on main\"; exit 1; }; V=$(node -p \"require(\\\"./package.json\\\").version\"); git tag v$V -m \"Release $V\"; git push origin v$V'",
+    "test": "echo 'No tests configured'",
+    "lint": "echo 'No linting configured'"
+  }
+}

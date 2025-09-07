@@ -1,0 +1,20 @@
+name: Bug report
+description: Report a bug
+labels: [bug]
+title: '[bug]: '
+body:
+  - type: textarea
+    id: desc
+    attributes: { label: What happened?, placeholder: Clear steps to reproduce... }
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes: { label: Package version (e.g. 0.0.2) }
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Node: 22.x\nOS: macOS 14 / Ubuntu 22.04\nPackage manager: pnpm 10.15.0"
+  - type: textarea
+    id: extra
+    attributes: { label: Extra context }
