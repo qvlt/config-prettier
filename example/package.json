@@ -7,9 +7,9 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@qvlt/config-prettier": "file:.."
   },
   "devDependencies": {
+    "@qvlt/config-prettier": "file:..",
     "prettier": "^3.6.2"
   }
 }
