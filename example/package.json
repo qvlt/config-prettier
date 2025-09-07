@@ -1,14 +1,13 @@
 {
   "name": "example-project",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@qvlt/config-prettier": "^0.0.1"
-  },
-  "dependencies": {
-    "@qvlt/config-prettier": "file:.."
+    "@qvlt/config-prettier": "file:..",
+    "prettier": "^3.6.2"
   }
 }
