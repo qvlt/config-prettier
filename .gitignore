@@ -99,7 +99,7 @@ jspm_packages/
 # Package lock files (keep original formatting)
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
+# pnpm-lock.yaml - Keep this for standalone package
 
 # Generated files
 *.min.js
