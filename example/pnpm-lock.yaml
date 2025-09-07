@@ -7,11 +7,10 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@qvlt/config-prettier':
         specifier: file:..
         version: file:..
-    devDependencies:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2

@@ -6,8 +6,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "@qvlt/config-prettier": "file:..",
     "prettier": "^3.6.2"
